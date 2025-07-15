@@ -70,7 +70,14 @@ $vote = $_GET['vote'];
   <div class="container">
     <h1>PHP Hotels</h1>
 
-    <hr class="my-5">
+    <hr class="mt-5">
+
+    <div class="hero">
+      <h3>Search results</h3>
+      <a href="/boolean/php-hotel/index.php" class="btn btn-secondary">Back</a>
+    </div>
+
+    <hr class="mb-5">
 
     <!-- table -->
     <table class="table table-striped">
@@ -112,8 +119,6 @@ $vote = $_GET['vote'];
       </tbody>
 
     </table>
-
-    <a href="/boolean/php-hotel/index.php" class="btn btn-secondary">Back</a>
 
   </div>
 

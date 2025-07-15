@@ -74,7 +74,7 @@ $hotels = [
 
           <div class="parking-wrapper">
             <input
-              type="radio"
+              type="checkbox"
               id="hasParking"
               name="hasParking">
             <label for="hasParking">Has parking</label>
