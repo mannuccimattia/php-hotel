@@ -1,47 +1,9 @@
-<?php
+<?php // import hotels array and functions from utils folder
 
-$hotels = [
-
-  [
-    'name' => 'Hotel Belvedere',
-    'description' => 'Hotel Belvedere Descrizione',
-    'parking' => true,
-    'vote' => 4,
-    'distance_to_center' => 10.4
-  ],
-  [
-    'name' => 'Hotel Futuro',
-    'description' => 'Hotel Futuro Descrizione',
-    'parking' => true,
-    'vote' => 2,
-    'distance_to_center' => 2
-  ],
-  [
-    'name' => 'Hotel Rivamare',
-    'description' => 'Hotel Rivamare Descrizione',
-    'parking' => false,
-    'vote' => 1,
-    'distance_to_center' => 1
-  ],
-  [
-    'name' => 'Hotel Bellavista',
-    'description' => 'Hotel Bellavista Descrizione',
-    'parking' => false,
-    'vote' => 5,
-    'distance_to_center' => 5.5
-  ],
-  [
-    'name' => 'Hotel Milano',
-    'description' => 'Hotel Milano Descrizione',
-    'parking' => true,
-    'vote' => 2,
-    'distance_to_center' => 50
-  ],
-
-];
+require "./utils/functions.php";
+require "./utils/hotels_list.php";
 
 ?>
-
 
 <?php // GET params
 
@@ -97,21 +59,16 @@ $vote = $_GET['vote'];
         <?php
 
         foreach ($hotels as $hotel) {
-          // variables
-          $title = "<td>$hotel[name]</td>";
-          $description = "<td>$hotel[description]</td>";
-          $parking_td = "<td class='text-center'>" . ($hotel['parking'] ? "✔️" : "❌") . "</td>";
-          $vote_td = "<td class='text-center'>$hotel[vote]</td>";
-          $distance = "<td class='text-end'>$hotel[distance_to_center] km</td>";
 
-          //filter: show hotels with parking
+          // retrieve hotel info with html
+          $hotel_info = getHotelInfo($hotel);
+
+          // check filters
           if ($parking && !$hotel['parking']) continue;
           if ($vote != "" && $hotel['vote'] < $vote) continue;
 
-          // echo
-          echo "<tr>";
-          echo $title . $description . $parking_td . $vote_td . $distance;
-          echo "</tr>";
+          // print table 
+          showTable($hotel_info);
         }
 
         ?>

@@ -1,44 +1,7 @@
-<?php // hotels array
+<?php // import hotels array and functions from utils folder
 
-$hotels = [
-
-  [
-    'name' => 'Hotel Belvedere',
-    'description' => 'Hotel Belvedere Descrizione',
-    'parking' => true,
-    'vote' => 4,
-    'distance_to_center' => 10.4
-  ],
-  [
-    'name' => 'Hotel Futuro',
-    'description' => 'Hotel Futuro Descrizione',
-    'parking' => true,
-    'vote' => 2,
-    'distance_to_center' => 2
-  ],
-  [
-    'name' => 'Hotel Rivamare',
-    'description' => 'Hotel Rivamare Descrizione',
-    'parking' => false,
-    'vote' => 1,
-    'distance_to_center' => 1
-  ],
-  [
-    'name' => 'Hotel Bellavista',
-    'description' => 'Hotel Bellavista Descrizione',
-    'parking' => false,
-    'vote' => 5,
-    'distance_to_center' => 5.5
-  ],
-  [
-    'name' => 'Hotel Milano',
-    'description' => 'Hotel Milano Descrizione',
-    'parking' => true,
-    'vote' => 2,
-    'distance_to_center' => 50
-  ],
-
-];
+require "./utils/functions.php";
+require "./utils/hotels_list.php";
 
 ?>
 
@@ -118,17 +81,9 @@ $hotels = [
         <?php
 
         foreach ($hotels as $hotel) {
-          // variables
-          $title = "<td>$hotel[name]</td>";
-          $description = "<td>$hotel[description]</td>";
-          $parking = "<td class='text-center'>" . ($hotel['parking'] ? "✔️" : "❌") . "</td>";
-          $vote = "<td class='text-center'>$hotel[vote]</td>";
-          $distance = "<td class='text-end'>$hotel[distance_to_center] km</td>";
 
-          // echo
-          echo "<tr>";
-          echo $title . $description . $parking . $vote . $distance;
-          echo "</tr>";
+          // retrieve hotel info with html and print table
+          showTable(getHotelInfo($hotel));
         }
 
         ?>
